@@ -5,13 +5,11 @@ import { NavLink as Link } from "react-router-dom";
 import * as colors from "../../colors";
 import Arrow from "../../images/arrow-icon.png";
 import SearchWhite from "../../images/search-icon-white.png";
+import Burger from "./Burger";
 
-export default function SideNavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-  /* TODO: Write the necessary functions to open and close the sidebar */
-
+const sideNavBarDesktop = () => {
   return (
-    <SideNavBarCont className={isOpen ? "visible" : ""}>
+    <SideNavBarDesktop>
       {/* TODO: Implement a hamburger icon that controls the open state of the sidebar. This control should only be visible on mobile devices via CSS media queries */}
       {/* The sidebar should slide in from left */}
       <SideNavHeader>
@@ -32,11 +30,43 @@ export default function SideNavBar() {
       </SideNavSectionTitle>
       <NavLink to="/saved/movies">Movies</NavLink>
       <NavLink to="/saved/tv-shows">Tv Shows</NavLink>
-    </SideNavBarCont>
+    </SideNavBarDesktop>
+  );
+};
+
+export default function SideNavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      {/* {isOpen && (
+        <SideNavBarCont className={isOpen ? "visible" : ""}>
+          <SideNavHeader>
+            Wesley
+            <img src={Arrow} alt="Arrow pointing down" />
+          </SideNavHeader>
+          <SideNavMainLink to="/discover" exact>
+            Discover
+            <img src={SearchWhite} alt="Magnifying glass" />
+          </SideNavMainLink>
+          <SideNavSectionTitle>
+            <HeaderText>Watched</HeaderText>
+          </SideNavSectionTitle>
+          <NavLink to="/watched/movies">Movies</NavLink>
+          <NavLink to="/watched/tv-shows">Tv Shows</NavLink>
+          <SideNavSectionTitle>
+            <HeaderText>Saved</HeaderText>
+          </SideNavSectionTitle>
+          <NavLink to="/saved/movies">Movies</NavLink>
+          <NavLink to="/saved/tv-shows">Tv Shows</NavLink>
+        </SideNavBarCont>
+      )} */}
+      {sideNavBarDesktop()}
+    </>
   );
 }
 
-const SideNavBarCont = styled.div`
+const SideNavBarDesktop = styled.div`
   display: none;
 
   @media only screen and (min-width: 976px) {
@@ -47,6 +77,22 @@ const SideNavBarCont = styled.div`
     height: 100%;
     background-color: ${colors.sideNavBar};
     color: white;
+  }
+`;
+
+const SideNavBarCont = styled.div`
+  &.visible {
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 280px;
+    height: 100%;
+    background-color: ${colors.sideNavBar};
+    color: white;
+  }
+
+  @media only screen and (min-width: 976px) {
+    display: none;
   }
 `;
 

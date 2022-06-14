@@ -6,6 +6,7 @@ import * as fetcher from "../../fetcher";
 
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
+import Burger from "../../components/sidenavbar/Burger";
 
 // class Discover extends React.Component {
 //   constructor(props) {
@@ -58,7 +59,7 @@ const Discover = () => {
   });
 
   const getListData = async () => {
-    console.log(await fetcher.fetchMovieList());
+    // console.log(await fetcher.fetchMovieList());
     const { results, genre_ids, total_results } =
       await fetcher.fetchMovieList();
 
@@ -82,7 +83,10 @@ const Discover = () => {
 
   return (
     <DiscoverWrapper>
-      <MobilePageTitle>Discover</MobilePageTitle>{" "}
+      <MobilePageTitle>
+        <Burger />
+        <h1>Discover</h1>
+      </MobilePageTitle>{" "}
       {/* MobilePageTitle should become visible on mobile devices via CSS media queries*/}
       <TotalCount>{totalCount} results</TotalCount>
       <MovieFilters>
@@ -130,8 +134,17 @@ const MovieFilters = styled.div`
   }
 `;
 
-const MobilePageTitle = styled.h1`
-  display: none;
+const MobilePageTitle = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media only screen and (min-width: 976px) {
+    display: none;
+  }
+
+  &.h1 {
+    margin-left: 20px;
+  }
 `;
 
 const TotalCount = styled.strong`

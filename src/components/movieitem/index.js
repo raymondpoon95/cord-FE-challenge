@@ -7,16 +7,19 @@ export default function MovieItem({ movie, genres }) {
     // TODO: Complete the MovieItem component
     <MovieItemWrapper>
       <LeftCont>
-        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+        <img
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          alt={movie.title}
+        />
       </LeftCont>
-      <RightCont>
-        <Title>
-          {movie.title}
+      <RightWrapper>
+        <RightCont>
+          <Title>{movie.title}</Title>
           <Rating>{movie.vote_average}</Rating>
-        </Title>
+        </RightCont>
         <Overview>{movie.overview}</Overview>
         <Date>{movie.release_date}</Date>
-      </RightCont>
+      </RightWrapper>
     </MovieItemWrapper>
   );
 }
@@ -47,29 +50,50 @@ const LeftCont = styled.div`
   @media only screen and (min-width: 768px) {
     img {
       width: 200px;
-      object-cover: fit;
+    }
+  }
+
+  @media only screen and (min-width: 976px) {
+    img {
+      width: 150px;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    img {
+      width: 200px;
     }
   }
 `;
 
 const RightCont = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const RightWrapper = styled.div`
+  display: flex;
   flex-direction: column;
   padding: 0 10px;
 
   @media only screen and (min-width: 768px) {
     padding: 0 20px;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    padding: 0 20px;
+    flex: 1;
+    flex-wrap: wrap;
   }
 `;
 
 const Title = styled.h2`
   font-size: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  @media only screen and (min-width: 768px) {
-    font-size: 24px;
+  @media only screen and (min-width: 976px) {
+    font-size: 20px;
   }
 `;
 
@@ -81,6 +105,22 @@ const Overview = styled.p`
 
   @media only screen and (min-width: 768px) {
     font-size: 16px;
+  }
+
+  @media only screen and (min-width: 976px) {
+    white-space: nowrap;
+    font-size: 16px;
+    width: 100px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: 200px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    white-space: normal;
+    font-size: 16px;
+    width: 100%;
   }
 `;
 

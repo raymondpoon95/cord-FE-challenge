@@ -7,7 +7,6 @@ import SearchBar from "../../components/searchbar";
 
 import SearchIcon from "../../images/search-icon-yellow.png";
 import YearIcon from "../../images/year-icon.png";
-import AccordionFilter from "../accordionfilter";
 
 export default function SearchFilters({
   genres,
@@ -35,11 +34,11 @@ export default function SearchFilters({
         <CategoryTitle>Movies</CategoryTitle>
         {/* TODO: Complete the "AccordionFilter" component and re-use it for all filter categories */}
         {/* pass the filter options data here from the API -> genre, language, rating */}
-        <ExpandableFilter
+        {/* <ExpandableFilter
           genres={genres}
           ratings={ratings}
           languages={languages}
-        />
+        /> */}
       </SearchFiltersCont>
     </FiltersWrapper>
   );
