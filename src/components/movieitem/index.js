@@ -92,6 +92,10 @@ const RightWrapper = styled.div`
 const Title = styled.h2`
   font-size: 10px;
 
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+
   @media only screen and (min-width: 976px) {
     font-size: 20px;
   }

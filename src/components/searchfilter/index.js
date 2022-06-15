@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 import * as colors from "../../colors";
@@ -14,6 +14,10 @@ export default function SearchFilters({
   languages,
   onSearch,
 }) {
+  const onChange = (value) => {
+    onSearch(value);
+  };
+
   return (
     <FiltersWrapper>
       <SearchFiltersCont className="search_inputs_cont" marginBottom>
@@ -22,6 +26,7 @@ export default function SearchFilters({
           type="text"
           icon={{ src: SearchIcon, alt: "Magnifying glass" }}
           placeholder="Search for movies"
+          onChange={onChange}
         />
         <SearchBar
           id="year_search_input"
