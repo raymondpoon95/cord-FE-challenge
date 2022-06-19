@@ -10,3 +10,10 @@ export const fetchMovieList = async () => {
     https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
   return response.data;
 };
+
+// https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
+export const fetchGenreList = async () => {
+  const response = await axios.get(`
+  https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+  return response.data;
+};
