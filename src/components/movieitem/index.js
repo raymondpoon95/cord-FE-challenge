@@ -83,11 +83,7 @@ const RightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 10px;
-
-  @media only screen and (min-width: 768px) {
-    padding: 0 20px;
-    flex-wrap: wrap;
-  }
+  width: 100%;
 
   @media only screen and (min-width: 1440px) {
     padding: 0 20px;
