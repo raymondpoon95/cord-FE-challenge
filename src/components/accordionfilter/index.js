@@ -26,7 +26,6 @@ const AccordionFilter = ({ genres, ratings, languages, onChange }) => {
               label={genre.name}
               open={openGenre}
               onChange={onChange}
-              heading="genre"
             />
           ))}
       </ContentContainer>
@@ -48,7 +47,6 @@ const AccordionFilter = ({ genres, ratings, languages, onChange }) => {
               label={rating.name}
               open={openRating}
               onChange={onChange}
-              heading="rating"
             />
           ))}
       </ContentContainer>
@@ -72,7 +70,6 @@ const AccordionFilter = ({ genres, ratings, languages, onChange }) => {
               label={language.name}
               open={openLanguage}
               onChange={onChange}
-              heading="language"
             />
           ))}
       </ContentContainer>

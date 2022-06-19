@@ -1,15 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Checkbox({
-  id,
-  name,
-  checked,
-  label,
-  onChange,
-  open,
-  heading,
-}) {
+export default function Checkbox({ id, name, checked, label, onChange, open }) {
   // TODO: Style the component and checkmark to look like the mockup provided
   return (
     <CheckboxCont className={open ? "active" : ""}>
@@ -18,7 +10,7 @@ export default function Checkbox({
         id={id}
         name={name}
         checked={checked}
-        onChange={(e) => onChange(e.target.id, heading)}
+        onChange={(e) => onChange(e.target.id)}
       ></input>
       <label htmlFor={id}>{label}</label>
     </CheckboxCont>
