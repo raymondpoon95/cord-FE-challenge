@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import * as colors from "../../colors";
+import { getGenresFromMovie } from "../../helper";
 
 export default function MovieItem({ movie, genres }) {
+  // let genre = getGenresFromMovie(genres, movie.genre_ids);
   return (
     // TODO: Complete the MovieItem component
     <MovieItemWrapper>
@@ -17,6 +19,11 @@ export default function MovieItem({ movie, genres }) {
           <Title>{movie.title}</Title>
           <Rating>{movie.vote_average}</Rating>
         </RightCont>
+        <GenreContainer>
+          {getGenresFromMovie(genres, movie.genre_ids).map((genre, index) => (
+            <p key={index}>{genre.name}</p>
+          ))}
+        </GenreContainer>
         <Overview>{movie.overview}</Overview>
         <Date>{movie.release_date}</Date>
       </RightWrapper>
@@ -145,6 +152,34 @@ const Date = styled.p`
   color: ${colors.primaryColor};
 
   @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+const GenreContainer = styled.div`
+  font-size: 10px;
+  display: flex;
+  color: ${colors.primaryColor};
+
+  p:first-child {
+    padding-left: 0;
+  }
+
+  p {
+    padding: 0 5px;
+    border-right: 1.5px solid ${colors.primaryColor};
+  }
+
+  p:last-child {
+    border-right: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  @media only screen and (min-width: 976px) {
     font-size: 16px;
   }
 `;

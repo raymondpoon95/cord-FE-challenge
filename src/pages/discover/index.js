@@ -6,6 +6,7 @@ import * as fetcher from "../../fetcher";
 
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
+import { getGenresFromMovie } from "../../helper";
 
 const Discover = () => {
   const [movieData, setMovieData] = useState({
@@ -41,13 +42,23 @@ const Discover = () => {
       ...prevState,
       results,
       totalCount: total_results,
-      genreOptions: genre_ids,
+    }));
+  };
+
+  const getGenreData = async () => {
+    // console.log(await fetcher.fetchGenreList());
+    const { genres } = await fetcher.fetchGenreList();
+
+    setMovieData((prevState) => ({
+      ...prevState,
+      genreOptions: genres,
     }));
   };
 
   // TODO: Preload and set the popular movies and movie genres when page loads
   useEffect(() => {
     getListData();
+    getGenreData();
   }, []);
 
   // TODO: Update search results based on the keyword and year inputs
@@ -62,6 +73,8 @@ const Discover = () => {
 
   const { genreOptions, languageOptions, ratingOptions, totalCount, results } =
     movieData;
+
+  // getGenresFromMovie(genreOptions, results[0]);
 
   return (
     <DiscoverWrapper>
