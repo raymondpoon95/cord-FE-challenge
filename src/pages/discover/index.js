@@ -67,7 +67,18 @@ const Discover = () => {
     const filteredResults = results.filter((value) =>
       value.title.toLowerCase().includes(input.toLowerCase())
     );
+    setFilteredMovies(filteredResults);
+  };
 
+  const handleFilterMovies = (input, heading) => {
+    const { results } = movieData;
+
+    const filteredResults = results.filter((movie) => {
+      const movieGenre = [...movie.genre_ids];
+      if (movieGenre.includes(+input)) {
+        return movie;
+      }
+    });
     setFilteredMovies(filteredResults);
   };
 
@@ -89,6 +100,7 @@ const Discover = () => {
           ratings={ratingOptions}
           languages={languageOptions}
           onSearch={(keyword, year) => searchMovies(keyword, year)}
+          handleFilterMovies={handleFilterMovies}
         />
       </MovieFilters>
       <MovieResults>

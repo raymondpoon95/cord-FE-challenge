@@ -38,5 +38,9 @@ const InputWrapper = styled.div`
       color: ${colors.primaryColor};
       font-weight: 300;
     }
+
+    @media only screen and (min-width: 768px) {
+      flex-direction: column;
+    }
   }
 `;
