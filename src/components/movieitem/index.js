@@ -4,7 +4,6 @@ import * as colors from "../../colors";
 import { getGenresFromMovie } from "../../helper";
 
 export default function MovieItem({ movie, genres }) {
-  // let genre = getGenresFromMovie(genres, movie.genre_ids);
   return (
     // TODO: Complete the MovieItem component
     <MovieItemWrapper>
@@ -93,7 +92,7 @@ const RightWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 10px;
+  font-size: 0.9rem;
 
   @media only screen and (min-width: 768px) {
     font-size: 16px;
@@ -136,6 +135,9 @@ const Rating = styled.p`
   background-color: ${colors.primaryColor};
   color: white;
   padding: 5px;
+  min-width: 25px;
+  text-align: center;
+  font-size: 0.7rem;
 
   @media only screen and (min-width: 768px) {
     font-size: 16px;

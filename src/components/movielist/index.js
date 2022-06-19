@@ -6,7 +6,7 @@ import MovieItem from "../movieitem";
 export default function MovieList({ movies, genres, filteredMovies }) {
   return (
     <MoviesWrapper>
-      {filteredMovies.length == 0
+      {filteredMovies.length === 0
         ? movies.map((movie) => (
             <MovieItem key={movie.id} movie={movie} genres={genres} />
           ))

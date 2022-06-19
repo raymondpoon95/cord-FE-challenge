@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import * as colors from "../../colors";
 import * as fetcher from "../../fetcher";
 
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
-import { getGenresFromMovie } from "../../helper";
 
 const Discover = () => {
   const [movieData, setMovieData] = useState({
@@ -34,9 +32,7 @@ const Discover = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   const getListData = async () => {
-    // console.log(await fetcher.fetchMovieList());
-    const { results, genre_ids, total_results } =
-      await fetcher.fetchMovieList();
+    const { results, total_results } = await fetcher.fetchMovieList();
 
     setMovieData((prevState) => ({
       ...prevState,
@@ -46,7 +42,6 @@ const Discover = () => {
   };
 
   const getGenreData = async () => {
-    // console.log(await fetcher.fetchGenreList());
     const { genres } = await fetcher.fetchGenreList();
 
     setMovieData((prevState) => ({
@@ -84,8 +79,6 @@ const Discover = () => {
 
   const { genreOptions, languageOptions, ratingOptions, totalCount, results } =
     movieData;
-
-  // getGenresFromMovie(genreOptions, results[0]);
 
   return (
     <DiscoverWrapper>
