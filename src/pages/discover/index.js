@@ -6,7 +6,6 @@ import * as fetcher from "../../fetcher";
 
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
-import Burger from "../../components/sidenavbar/Burger";
 
 const Discover = () => {
   const [movieData, setMovieData] = useState({
@@ -67,7 +66,6 @@ const Discover = () => {
   return (
     <DiscoverWrapper>
       <MobilePageTitle>
-        <Burger />
         <h1>Discover</h1>
       </MobilePageTitle>{" "}
       {/* MobilePageTitle should become visible on mobile devices via CSS media queries*/}
@@ -129,8 +127,9 @@ const MobilePageTitle = styled.div`
     display: none;
   }
 
-  &.h1 {
-    margin-left: 20px;
+  h1 {
+    margin-left: 5%;
+    padding-left: 10px;
   }
 `;
 
